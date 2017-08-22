@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"gopkg.in/ldap.v1"
+	"gopkg.in/ldap.v2"
 )
 
 //SecurityType specifies how to connect to an Active Directory server

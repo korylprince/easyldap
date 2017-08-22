@@ -3,7 +3,7 @@ package easyldap
 import (
 	"log"
 
-	"gopkg.in/ldap.v1"
+	"gopkg.in/ldap.v2"
 )
 
 func getCookie(cntls []ldap.Control) []byte {
