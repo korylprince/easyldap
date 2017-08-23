@@ -15,6 +15,24 @@ func getCookie(cntls []ldap.Control) []byte {
 	return nil
 }
 
+//Conn returns an LDAP connection that is already bound
+func Conn(c *Config) (*ldap.Conn, error) {
+	conn, err := Connect(c)
+	if err != nil {
+		return nil, err
+	}
+
+	err = conn.Bind(c.Username, c.Password)
+	if err != nil {
+		if c.Debug {
+			log.Printf("DEBUG: LDAP Error %v\n", err)
+		}
+		return nil, err
+	}
+
+	return conn, nil
+}
+
 //Query returns all the entries matching the configuration given in c
 func Query(c *Config) ([]*ldap.Entry, error) {
 
